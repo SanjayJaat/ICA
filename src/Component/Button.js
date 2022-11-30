@@ -14,7 +14,7 @@ export default function Button({
 }) {
   return (
     <TouchableOpacity {...rest} onPress={onPress} style={[styles.touch, style]}>
-      <Text h1 color={color} style={[styles.texts, textStyle]}>
+      <Text h1 color={color + 90} fw={'600'} style={[styles.texts, textStyle]}>
         {lable}
       </Text>
     </TouchableOpacity>
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
   },
   texts: {
     textAlign: 'center',
-    fontFamily: 'serif',
+    // fontFamily: 'serif',
   },
 });

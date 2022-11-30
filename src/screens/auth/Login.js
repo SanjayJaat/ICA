@@ -6,25 +6,31 @@ import {black, navy, red} from '../../Utils/Color';
 import Input from '../../Component/Input';
 import Button from '../../Component/Button';
 import {sizes} from '../../Utils/Typograpy';
+import Loader from '../../Component/Loader';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const login = () => {
-    // if (username == '' || password == '') {
-    //   alert('please enter Data');
-    // }
-    if (username == '') {
+    if (username == '' && password == '') {
+      alert('please enter Data');
+    } else if (username.trim() == '' || username == 'null') {
       alert('enter your email');
-    } else if (password == '') {
+    } else if (password.trim() == '' || password == 'null') {
       alert('enter your password');
     } else {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
     }
   };
 
   return (
     <BaseView style={styles.view}>
+      <Loader visible={loading} />
       <Text color={red} mt={100} h1 style={styles.welcome} numberOfLines={1}>
         Welcome
       </Text>
@@ -33,6 +39,7 @@ const Login = ({navigation}) => {
         value={username}
         setValue={setUsername}
         placeholder="Username"></Input>
+
       <Input
         value={password}
         setValue={setPassword}
@@ -51,7 +58,7 @@ const Login = ({navigation}) => {
         <Text style={styles.text1}>
           {' '}
           Forgot:{' '}
-          <Text style={{textDecorationLine: 'underline', color: 'red'}}>
+          <Text style={{textDecorationLine: 'underline', color: red + 99}}>
             Password
           </Text>
         </Text>

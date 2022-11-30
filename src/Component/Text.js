@@ -14,6 +14,7 @@ export default function Text({
   h5,
   h6,
   mt,
+  ta,
   fw = 'bold',
   ...rest
 }) {
@@ -26,6 +27,7 @@ export default function Text({
         color && StyleSheet.flatten([styles.color(color), style]),
         mt && StyleSheet.flatten([styles.mt(mt), style]),
         fw && StyleSheet.flatten([styles.fw(fw), style]),
+        ta && StyleSheet.flatten([styles.ta(ta), style]),
 
         h5 && StyleSheet.flatten([styles.h5, style]),
         h1 && StyleSheet.flatten([styles.h1, style]),
@@ -71,4 +73,7 @@ const styles = StyleSheet.create({
   h6: {
     fontSize: sizes.h6,
   },
+  ta: ta => ({
+    textAlign: ta,
+  }),
 });
