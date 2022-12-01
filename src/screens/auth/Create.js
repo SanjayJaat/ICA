@@ -7,22 +7,34 @@ import Input from '../../Component/Input';
 import Button from '../../Component/Button';
 import Loader from '../../Component/Loader';
 
-const Create = () => {
+const Create = ({navigation}) => {
   const [name, setname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [comfirm, setComfirm] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const submit = () => {
-    if (name === '' && email == '' && password == '' && comfirm == '') {
-      alert('plz enter data');
+    if (
+      name.trim() === '' ||
+      (name == 'nul' && email.trim() == '') ||
+      (email == 'null' && password.trim() == '') ||
+      (password == 'null' && comfirm.trim() == '') ||
+      comfirm == 'null'
+    ) {
+      alert('Plz Enter Data');
     } else {
+      setLoading(true);
+      setTimeout(() => {
+        setLoading(false);
+        navigation.replace('Login');
+      }, 3000);
     }
   };
 
   return (
     <BaseView style={styles.BaseView}>
-      <Loader />
+      <Loader visible={loading} />
       <Text h1 mt={50} ta={'center'} color={white}>
         Create Account
       </Text>
