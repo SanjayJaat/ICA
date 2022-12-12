@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "343721632474",
+    "project_id": "fir-c8723",
+    "storage_bucket": "fir-c8723.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343721632474:android:c8bf71b1ba13f067ec7be3",
+        "android_client_info": {
+          "package_name": "com.ica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343721632474-adohenslqde8v4455gl1k2ur63gi81i5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9piKxMYKGAoCOZ0BurESIrY2oddjCdW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343721632474-adohenslqde8v4455gl1k2ur63gi81i5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

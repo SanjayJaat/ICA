@@ -11,18 +11,13 @@ export default function Input({
   style,
   value,
   setValue,
+  isPassword,
   ...rest
 }) {
   const [passwordVisible, setPasswordVisible] = useState(true);
   let keyboardType = 'default';
-  if (placeholder === 'Password') {
-    keyboardType = 'numeric';
-  }
-
-  if (placeholder === 'Username') {
-    keyboardType = 'email-adderes';
-  }
-
+  // let isPassword =
+  //   placeholder === 'Password' || placeholder == 'Confirm password';
   return (
     <View style={[styles.container, style]}>
       <TextInput
@@ -30,15 +25,17 @@ export default function Input({
         value={value}
         onChangeText={setValue}
         placeholder={placeholder}
-        secureTextEntry={placeholder === 'Password' ? passwordVisible : false}
+        secureTextEntry={isPassword ? passwordVisible : false}
         keyboardType={keyboardType}
         style={[
           styles.input,
-          {width: placeholder === 'Password' ? '88%' : '100%'},
+          {
+            width: isPassword ? '88%' : '100%',
+          },
           style,
         ]}
       />
-      {placeholder === 'Password' ? (
+      {isPassword ? (
         <Icon
           name={passwordVisible ? 'eye' : 'eye-slash'}
           size={25}

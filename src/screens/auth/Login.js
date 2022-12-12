@@ -7,6 +7,8 @@ import Input from '../../Component/Input';
 import Button from '../../Component/Button';
 import {sizes} from '../../Utils/Typograpy';
 import Loader from '../../Component/Loader';
+import Toast from 'react-native-toast-message';
+import {SignInUser} from '../../Network/auth';
 
 const Login = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -14,17 +16,29 @@ const Login = ({navigation}) => {
   const [loading, setLoading] = useState(false);
 
   const login = () => {
-    if (username == '' && password == '') {
-      alert('please enter Data');
-    } else if (username.trim() == '' || username == 'null') {
-      alert('enter your email');
-    } else if (password.trim() == '' || password == 'null') {
-      alert('enter your password');
+    if (
+      (username == '' &&
+        password == '' &&
+        (username.trim() == '' || username == 'null') &&
+        password.trim() == '') ||
+      password == 'null'
+    ) {
+      Toast.show({
+        type: 'error',
+        text1: 'Create',
+        text2: 'Plz Enter Data👋',
+      });
     } else {
       setLoading(true);
-      setTimeout(() => {
-        setLoading(false);
-      }, 3000);
+      SignInUser(username, password)
+        .then(() => {
+          setLoading(false);
+          navigation.navigate('Home');
+        })
+        .catch(error => {
+          setLoading(false);
+          alert(error);
+        });
     }
   };
 
@@ -39,6 +53,7 @@ const Login = ({navigation}) => {
         value={username}
         setValue={setUsername}
         placeholder="Username"></Input>
+      {/* <Text color={'white'}>{username}</Text> */}
 
       <Input
         value={password}
