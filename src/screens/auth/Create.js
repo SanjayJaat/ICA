@@ -43,7 +43,8 @@ const Create = ({navigation}) => {
       // }
 
       setLoading(true);
-      CreateUser(email, password)
+      let data = {email, password, name, number};
+      CreateUser(data)
         .then(res => {
           console.log(res, 'usercreate');
           Toast.show({
@@ -71,7 +72,7 @@ const Create = ({navigation}) => {
       // }, 3000);
     }
   };
-  console.log(auth().currentUser, 'userss====');
+  //console.log(auth().currentUser, 'userss====');
   return (
     <BaseView style={styles.BaseView}>
       <Loader visible={loading} />

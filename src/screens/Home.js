@@ -5,7 +5,7 @@ import Button from '../Component/Button';
 
 export default class Home extends React.Component {
   render() {
-    console.log(auth().currentUser, 'userss====');
+    // console.log(auth().currentUser, 'userss====');
 
     return (
       <View style={{marginTop: 100, alignSelf: 'center'}}>

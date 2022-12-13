@@ -1,9 +1,12 @@
 import auth from '@react-native-firebase/auth';
-export const CreateUser = (email, password) => {
+import database from '@react-native-firebase/database';
+
+export const CreateUser = data => {
   return new Promise(function (resolve, reject) {
     auth()
-      .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .createUserWithEmailAndPassword(data.email, data.password)
+      .then(async () => {
+        await SaveUser(data);
         console.log('User account created & signed in!');
         resolve('Success');
       })
@@ -29,6 +32,25 @@ export const SignInUser = (email, password) => {
       })
       .catch(error => {
         reject(error.message);
+      });
+  });
+};
+
+export const SaveUser = data => {
+  return new Promise(function (resolve, reject) {
+    const UserId = auth().currentUser.uid;
+    database()
+      .ref(`/users/${UserId}`)
+      .set({
+        name: data.name,
+        phone: data.number,
+        email: auth().currentUser.email,
+        uid: UserId,
+      })
+      .then(() => resolve('Data set.'))
+
+      .catch(error => {
+        reject(error);
       });
   });
 };

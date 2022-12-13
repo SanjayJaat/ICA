@@ -25,7 +25,7 @@ const Login = ({navigation}) => {
     ) {
       Toast.show({
         type: 'error',
-        text1: 'Create',
+        text1: 'login',
         text2: 'Plz Enter Data👋',
       });
     } else {
@@ -59,7 +59,7 @@ const Login = ({navigation}) => {
         value={password}
         setValue={setPassword}
         placeholder="Password"
-        secureTextEntry={true}></Input>
+        isPassword></Input>
       <Button onPress={login} lable={'Login'} />
 
       <Button
