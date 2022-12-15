@@ -12,10 +12,11 @@ export default function Input({
   value,
   setValue,
   isPassword,
+  keyboardType,
   ...rest
 }) {
   const [passwordVisible, setPasswordVisible] = useState(true);
-  let keyboardType = 'default';
+  // let keyboardType = 'default';
   // let isPassword =
   //   placeholder === 'Password' || placeholder == 'Confirm password';
   return (
